@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
 
 import java.util.Date;
 
-@ToString
 @Data
 public class CreateClienteDto {
     @NotBlank(message = "nombre es obligatorio")
@@ -20,12 +20,12 @@ public class CreateClienteDto {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
-    @NotBlank(message = "fecha nacimiento es obligatorio")
+    @NotNull(message = "fecha nacimiento es obligatorio")
     private Date fechaNacimiento;
 
     public CreateClienteDto() {}
 
-    public CreateClienteDto(String nombre, String email, Date fechaNacimiento) {
+    public CreateClienteDto( String email,String nombre, Date fechaNacimiento) {
         this.nombre = nombre;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
@@ -47,11 +47,11 @@ public class CreateClienteDto {
         this.email = email;
     }
 
-    public @NotBlank(message = "fecha nacimiento es obligatorio") Date getFechaNacimiento() {
+    public @NotNull(message = "fecha nacimiento es obligatorio") Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(@NotBlank(message = "fecha nacimiento es obligatorio") Date fechaNacimiento) {
+    public void setFechaNacimiento(@NotNull(message = "fecha nacimiento es obligatorio") Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 }
