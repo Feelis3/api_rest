@@ -1,41 +1,29 @@
-package marcos.perez.marcos_psp.entities;
+package marcos.perez.marcos_psp.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import marcos.perez.marcos_psp.entities.Cliente;
+import marcos.perez.marcos_psp.entities.Pedido;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
 import java.util.UUID;
 
-@Entity
 @Data
-public class Pedido {
-    @Id
-    @GeneratedValue
+public class GetPedidoDto {
     private UUID id;
-
-    @NotNull(message = "unidades es obligatorio")
     private int numUnidades;
-
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    @Temporal(TemporalType.DATE)
-    @NotNull(message = "fecha nacimiento es obligatorio")
     private Date fechaHoraPedido;
+    private Long cliente;
+    private Long producto;
 
-    @ManyToOne(optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Cliente cliente;
-
-    @ManyToOne(optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Producto producto;
-
-    public Pedido() {}
-    public Pedido(int numUnidades, Date fechaHoraPedido, Cliente cliente, Producto producto) {
+    public GetPedidoDto() {}
+    public GetPedidoDto(UUID id,int numUnidades,Date fechaHoraPedido,Long cliente,Long producto) {
+        this.id = id;
         this.numUnidades = numUnidades;
         this.fechaHoraPedido = fechaHoraPedido;
         this.cliente = cliente;
@@ -66,25 +54,25 @@ public class Pedido {
         this.fechaHoraPedido = fechaHoraPedido;
     }
 
-    public Cliente getCliente() {
+    public Long getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Long cliente) {
         this.cliente = cliente;
     }
 
-    public Producto getProducto() {
+    public Long getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
+    public void setProducto(Long producto) {
         this.producto = producto;
     }
 
     @Override
     public String toString() {
-        return "Pedido{" +
+        return "GetPedidoDto{" +
                 "id=" + id +
                 ", numUnidades=" + numUnidades +
                 ", fechaHoraPedido=" + fechaHoraPedido +
