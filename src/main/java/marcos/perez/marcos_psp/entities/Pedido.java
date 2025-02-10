@@ -15,7 +15,7 @@ import java.util.UUID;
 @Data
 public class Pedido {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @NotNull(message = "unidades es obligatorio")
@@ -36,6 +36,7 @@ public class Pedido {
 
     public Pedido() {}
     public Pedido(int numUnidades, Date fechaHoraPedido, Cliente cliente, Producto producto) {
+
         this.numUnidades = numUnidades;
         this.fechaHoraPedido = fechaHoraPedido;
         this.cliente = cliente;

@@ -8,12 +8,14 @@ import marcos.perez.marcos_psp.entities.Producto;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class PedidoMapper {
     public Pedido toPedido(@NonNull CreatePedidoDto createPedidoDto, Cliente cliente, Producto producto) {
         return new Pedido(
                 createPedidoDto.getNumUnidades(),
-                createPedidoDto.getFechaHoraPedido(),
+                new Date(),
                 cliente,
                 producto
         );

@@ -24,22 +24,17 @@ public class LoadDatabase {
         return args -> {
             Cliente cliente1 = new Cliente("Juan Pérez", "juan.perez@example.com", new Date());
             Cliente cliente2 = new Cliente("Ana Gómez", "ana.gomez@example.com", new Date());
-            Cliente cliente3 = new Cliente("Carlos Ruiz", "carlos.ruiz@example.com", new Date());
-            clienteRepository.saveAll(List.of(cliente1, cliente2, cliente3));
+            clienteRepository.saveAll(List.of(cliente1, cliente2));
 
             Producto producto1 = new Producto("Papel", 5.00f, true);
             Producto producto2 = new Producto("Sofa", 500.00f, false);
-            Producto producto3 = new Producto("Pantalla", 150.00f, true);
-            productoRepository.saveAll(List.of(producto1, producto2, producto3));
+            productoRepository.saveAll(List.of(producto1, producto2));
 
             Pedido pedido1 = new Pedido(2, new Date(), cliente1, producto1);
             Pedido pedido2 = new Pedido(1, new Date(), cliente2, producto2);
-            Pedido pedido3 = new Pedido(5, new Date(), cliente3, producto3);
+            Pedido pedido3 = new Pedido(5, new Date(), cliente1, producto2);
             pedidoRepository.saveAll(List.of(pedido1, pedido2, pedido3));
 
-            log.info("Pedido 1: {}", pedido1);
-            log.info("Pedido 2: {}", pedido2);
-            log.info("Pedido 3: {}", pedido3);
         };
     }
 

@@ -11,18 +11,32 @@ import java.util.Date;
 
 @Data
 public class CreatePedidoDto {
-    @NotNull(message = "unidades es obligatorio")
+    private Long idCliente;
+    private Long idProducto;
     private int numUnidades;
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    @Temporal(TemporalType.DATE)
-    @NotBlank(message = "fecha nacimiento es obligatorio")
-    private Date fechaHoraPedido;
-
     public CreatePedidoDto() {}
-    public CreatePedidoDto(int numUnidades, Date fechaHoraPedido) {
+
+    public CreatePedidoDto(Long idCliente, Long idProducto, int numUnidades) {
+        this.idCliente = idCliente;
+        this.idProducto = idProducto;
         this.numUnidades = numUnidades;
-        this.fechaHoraPedido = fechaHoraPedido;
+    }
+
+    public Long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Long getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Long idProducto) {
+        this.idProducto = idProducto;
     }
 
     public int getNumUnidades() {
@@ -31,13 +45,5 @@ public class CreatePedidoDto {
 
     public void setNumUnidades(int numUnidades) {
         this.numUnidades = numUnidades;
-    }
-
-    public Date getFechaHoraPedido() {
-        return fechaHoraPedido;
-    }
-
-    public void setFechaHoraPedido(Date fechaHoraPedido) {
-        this.fechaHoraPedido = fechaHoraPedido;
     }
 }
