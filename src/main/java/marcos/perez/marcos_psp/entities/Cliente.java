@@ -3,6 +3,7 @@ package marcos.perez.marcos_psp.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.Data;
 
 import java.util.Date;
@@ -23,6 +24,7 @@ public class Cliente {
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     @NotNull(message = "fecha nacimiento es obligatorio")
+    @Past(message = "La fecha de nacimiento debe ser anterior a la fecha actual")
     private Date fechaNacimiento;
 
     public Cliente() {}

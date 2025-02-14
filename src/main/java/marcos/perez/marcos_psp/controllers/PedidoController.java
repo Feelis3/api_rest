@@ -61,8 +61,7 @@ public class PedidoController {
         Cliente cliente = clienteRepository
                 .findById(nuevoPedido.getIdCliente())
                 .orElseThrow(() -> new ClienteNotFoundException(nuevoPedido.getIdCliente()));
-        System.out.println(cliente);
-        Producto producto = productoRepository
+       Producto producto = productoRepository
                 .findById(nuevoPedido.getIdProducto())
                 .orElseThrow(() -> new ProductoNotFoundException(nuevoPedido.getIdProducto()));
         Pedido pedido = pedidoRepository.save(

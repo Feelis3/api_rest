@@ -1,7 +1,9 @@
 package marcos.perez.marcos_psp.advices;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -21,23 +23,18 @@ public class GeneralExceptionAdvice {
     return ex.getMessage();
   }
 
-  /*@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-  @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-  public String handleParamTypeMismatchExceptions(MethodArgumentTypeMismatchException ex) {
-    String respuesta = ex.getPropertyName() + " debe ser del tipo " + ex.getRequiredType();
-    return respuesta;
+  // Captura errores de violación de integridad de datos (ej. clave duplicada)
+  @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+  @ExceptionHandler(DataIntegrityViolationException.class)
+  public void handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+    // No se devuelve ningún mensaje, solo el 400 Bad Request
   }
 
-  @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-  @ExceptionHandler(MethodArgumentNotValidException.class)
-  public Map<String, String> handleRequestBodyValidationExceptions(MethodArgumentNotValidException ex) {
-    Map<String, String> errors = new HashMap<>();
-    ex.getBindingResult().getAllErrors().forEach((error) -> {
-      String fieldName = ((FieldError) error).getField();
-      String errorMessage = error.getDefaultMessage();
-      errors.put(fieldName, errorMessage);
-    });
-    return errors;
-  }*/
+  // Captura errores relacionados con las transacciones de JPA
+  @ResponseStatus(code = HttpStatus.BAD_REQUEST)  // Aquí ajustamos el código de estado a 400
+  @ExceptionHandler(TransactionSystemException.class)
+  public void handleTransactionSystemException(TransactionSystemException ex) {
+    // No se devuelve ningún mensaje, solo el 400 Bad Request
+  }
 
 }

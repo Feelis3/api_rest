@@ -1,5 +1,6 @@
 package marcos.perez.marcos_psp.dtos;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -10,6 +11,7 @@ public class CreateProductoDto {
     private String nombre;
 
     @NotNull(message = "precio es obligatorio")
+    @DecimalMin(value = "0.0", inclusive = true, message = "El precio debe ser un valor mayor o igual a 0")
     private float precio;
 
     @NotNull(message = "stock es obligatorio")

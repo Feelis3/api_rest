@@ -3,6 +3,7 @@ package marcos.perez.marcos_psp.dtos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.util.Date;
 public class CreatePedidoDto {
     private Long idCliente;
     private Long idProducto;
+    @Min(value = 1, message = "El número de unidades debe ser un valor mayor o igual a 1")
     private int numUnidades;
 
     public CreatePedidoDto() {}
