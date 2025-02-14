@@ -13,15 +13,18 @@ public class GeneralExceptionAdvice {
   
   @ResponseStatus(code = HttpStatus.BAD_REQUEST)
   @ExceptionHandler(HttpMessageNotReadableException.class)
-  public String handleRequestBodyTypeMismatchExceptions(HttpMessageNotReadableException ex) {
-    return ex.getMessage();
+  public void handleRequestBodyTypeMismatchExceptions(HttpMessageNotReadableException ex) {
+
   }
 
-  @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+  @ResponseStatus(code = HttpStatus.BAD_REQUEST)
   @ExceptionHandler(Exception.class)
-  public String handleExceptions(Exception ex) {
-    return ex.getMessage();
+  public void handleExceptions(Exception ex) {
+
   }
+
+
+
 
   // Captura errores de violación de integridad de datos (ej. clave duplicada)
   @ResponseStatus(code = HttpStatus.BAD_REQUEST)
