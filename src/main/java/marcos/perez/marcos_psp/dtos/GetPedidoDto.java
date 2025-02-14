@@ -16,13 +16,13 @@ import java.util.UUID;
 @Data
 public class GetPedidoDto {
     private UUID id;
-    private int numUnidades;
+    private Integer numUnidades;
     private Date fechaHoraPedido;
     private Long cliente;
     private Long producto;
 
     public GetPedidoDto() {}
-    public GetPedidoDto(UUID id,int numUnidades,Date fechaHoraPedido,Long cliente,Long producto) {
+    public GetPedidoDto(UUID id,Integer numUnidades,Date fechaHoraPedido,Long cliente,Long producto) {
         this.id = id;
         this.numUnidades = numUnidades;
         this.fechaHoraPedido = fechaHoraPedido;
@@ -38,11 +38,11 @@ public class GetPedidoDto {
         this.id = id;
     }
 
-    public int getNumUnidades() {
+    public Integer getNumUnidades() {
         return numUnidades;
     }
 
-    public void setNumUnidades(int numUnidades) {
+    public void setNumUnidades(Integer numUnidades) {
         this.numUnidades = numUnidades;
     }
 

@@ -12,10 +12,10 @@ public class CreateProductoDto {
 
     @NotNull(message = "precio es obligatorio")
     @DecimalMin(value = "0.0", inclusive = true, message = "El precio debe ser un valor mayor o igual a 0")
-    private float precio;
+    private Float precio;
 
     @NotNull(message = "stock es obligatorio")
-    private boolean enStock;
+    private Boolean enStock;
 
     public CreateProductoDto() {}
 
@@ -33,19 +33,19 @@ public class CreateProductoDto {
         this.nombre = nombre;
     }
 
-    public float getPrecio() {
+    public Float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Float precio) {
         this.precio = precio;
     }
 
-    public boolean isEnStock() {
+    public Boolean isEnStock() {
         return enStock;
     }
 
-    public void setEnStock(boolean enStock) {
+    public void setEnStock(Boolean enStock) {
         this.enStock = enStock;
     }
 }

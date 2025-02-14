@@ -15,7 +15,7 @@ public class CreatePedidoDto {
     private Long idCliente;
     private Long idProducto;
     @Min(value = 1, message = "El número de unidades debe ser un valor mayor o igual a 1")
-    private int numUnidades;
+    private Integer numUnidades;
 
     public CreatePedidoDto() {}
 
@@ -41,11 +41,11 @@ public class CreatePedidoDto {
         this.idProducto = idProducto;
     }
 
-    public int getNumUnidades() {
+    public Integer getNumUnidades() {
         return numUnidades;
     }
 
-    public void setNumUnidades(int numUnidades) {
+    public void setNumUnidades(Integer numUnidades) {
         this.numUnidades = numUnidades;
     }
 }

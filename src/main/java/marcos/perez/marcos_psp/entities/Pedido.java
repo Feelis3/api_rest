@@ -19,7 +19,7 @@ public class Pedido {
     private UUID id;
 
     @NotNull(message = "unidades es obligatorio")
-    private int numUnidades;
+    private Integer numUnidades;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     @Temporal(TemporalType.DATE)
@@ -51,11 +51,11 @@ public class Pedido {
         this.id = id;
     }
 
-    public int getNumUnidades() {
+    public Integer getNumUnidades() {
         return numUnidades;
     }
 
-    public void setNumUnidades(int numUnidades) {
+    public void setNumUnidades(Integer numUnidades) {
         this.numUnidades = numUnidades;
     }
 
